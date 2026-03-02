@@ -5,9 +5,9 @@ import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Toolti
 const StudentDashboard = () => {
   const [student, setStudent] = useState(null);
   const [marks, setMarks] = useState([]);
-  const [attendance, setAttendance] = useState([]);
+  const [, setAttendance] = useState([]);
   const [attendancePercentage, setAttendancePercentage] = useState({});
-  const [subjects, setSubjects] = useState([]);
+  const [, setSubjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
