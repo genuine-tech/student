@@ -11,7 +11,7 @@ const Login = () => {
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const Login = () => {
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
@@ -42,15 +42,15 @@ const Login = () => {
   // Validate form data
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.username.trim()) {
       newErrors.username = 'Username is required';
     }
-    
+
     if (!formData.password.trim()) {
       newErrors.password = 'Password is required';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -58,16 +58,16 @@ const Login = () => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setIsLoading(true);
-    
+
     try {
       const result = await login(formData.username, formData.password);
-      
+
       if (result.success) {
         navigate('/dashboard');
       } else {
@@ -83,14 +83,14 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <AnimatedBackground />
-      
+
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-purple-300 dark:bg-purple-700 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-30 animate-blob"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-indigo-300 dark:bg-indigo-700 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 dark:bg-pink-700 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
-      
+
       <div className="max-w-md w-full space-y-8 relative z-10">
         <div className="text-center">
           {/* Logo or Icon */}
@@ -99,7 +99,7 @@ const Login = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
             </svg>
           </div>
-          
+
           <h2 className="text-5xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg">
             Welcome Back
           </h2>
@@ -110,7 +110,7 @@ const Login = () => {
             Sign in to access the admin dashboard
           </p>
         </div>
-        
+
         <form className="mt-8 space-y-6 bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-gray-200 dark:border-gray-700" onSubmit={handleSubmit}>
           <div className="space-y-5">
             <div>
@@ -128,9 +128,8 @@ const Login = () => {
                   name="username"
                   type="text"
                   required
-                  className={`appearance-none relative block w-full pl-10 pr-3 py-3 border ${
-                    errors.username ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700'
-                  } placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-200`}
+                  className={`appearance-none relative block w-full pl-10 pr-3 py-3 border ${errors.username ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700'
+                    } placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-200`}
                   placeholder="Enter your username"
                   value={formData.username}
                   onChange={handleChange}
@@ -145,7 +144,7 @@ const Login = () => {
                 </p>
               )}
             </div>
-            
+
             <div>
               <label htmlFor="password" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                 Password
@@ -161,9 +160,8 @@ const Login = () => {
                   name="password"
                   type="password"
                   required
-                  className={`appearance-none relative block w-full pl-10 pr-3 py-3 border ${
-                    errors.password ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700'
-                  } placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-200`}
+                  className={`appearance-none relative block w-full pl-10 pr-3 py-3 border ${errors.password ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700'
+                    } placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition-all duration-200`}
                   placeholder="Enter your password"
                   value={formData.password}
                   onChange={handleChange}
@@ -213,7 +211,7 @@ const Login = () => {
               )}
             </button>
           </div>
-          
+
           <div className="text-center">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
@@ -245,7 +243,7 @@ const Login = () => {
             </div>
           </div>
         </form>
-        
+
         <p className="text-center text-xs text-gray-500 dark:text-gray-400">
           Secure admin access to manage student records
         </p>
