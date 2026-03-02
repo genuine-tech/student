@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: student-backend
+    env: java
+    rootDir: backend
+    plan: free
+    buildCommand: mvn clean package -DskipTests
+    startCommand: java -jar target/student-management.war
+    envVars:
+      - key: JDBC_DATABASE_URL
+        sync: false
