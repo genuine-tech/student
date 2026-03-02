@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://your-render-backend-url.onrender.com/student-management/api/$1"
+      "destination": "https://student-px4n.onrender.com/student-management/api/$1"
     },
     {
       "source": "/(.*)",
