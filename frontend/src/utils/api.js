@@ -4,8 +4,9 @@ import axios from 'axios';
 // API Configuration
 // ========================================
 
-// Base URL for API calls - Use environment variable or fallback to localhost
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080/student-management/api';
+// Base URL for API calls - Use environment variable, /api for Vercel production, or localhost for dev
+const isProduction = process.env.NODE_ENV === 'production';
+const API_BASE_URL = process.env.REACT_APP_API_URL || (isProduction ? '/api' : 'http://localhost:8080/student-management/api');
 
 // Log API URL in development (helps debugging)
 if (process.env.NODE_ENV === 'development') {
