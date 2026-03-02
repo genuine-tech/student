@@ -46,7 +46,7 @@ public class DatabaseConfig {
     }
 
     // Database driver
-    public static final String DB_DRIVER = "org.h2.Driver";
+    public static final String DB_DRIVER = "org.postgresql.Driver";
 
     // Connection pool properties
     public static final int MAX_POOL_SIZE = 20;
